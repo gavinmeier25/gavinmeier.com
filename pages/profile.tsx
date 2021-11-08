@@ -1,0 +1,54 @@
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+import { Education } from '../components/independent/Education';
+import { Experience } from '../components/independent/Experience';
+import { Layout } from '../components/independent/Layout';
+import { Skills } from '../components/independent/Skills';
+import { getLayoutAndMetaDataProps, getProfileDataProps, LayoutMetaProps } from '../helpers/getPropData';
+
+interface ProfileProps {
+  experiences: { company: string; position: string; content: ReactNode; startDate: string; endDate: string }[];
+  education: { university: string; degree: string; content: ReactNode; startDate: string; endDate: string }[];
+  skills: { title: string; percentage: number }[];
+}
+
+type Props = ProfileProps & LayoutMetaProps;
+
+const Profile: NextPage<Props> = ({ experiences, education, logo, links, meta, footer, skills }) => {
+  return (
+    <Layout
+      head={{
+        title: meta.title,
+        description: meta.description,
+        icon: meta.icon
+      }}
+      footer={{ links: footer }}
+      navbar={{ isHomePage: false, logo, links }}
+    >
+      <Experience experiences={experiences} />
+      <Education education={education} />
+      <Skills skills={skills} />
+      <Link href="/resume.pdf">
+        <a
+          className="text-sm font-semibold border text-white bg-gray-700 border-green-200 rounded-full p-4 mb-4"
+          target="_blank"
+          download
+        >
+          Download PDF version
+        </a>
+      </Link>
+    </Layout>
+  );
+};
+
+export default Profile;
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      ...getLayoutAndMetaDataProps('/profile'),
+      ...getProfileDataProps()
+    }
+  };
+};

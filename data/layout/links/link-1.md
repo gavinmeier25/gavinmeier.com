@@ -1,0 +1,4 @@
+---
+href: '/'
+copy: 'About'
+---
