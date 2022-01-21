@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { ReactChild, ReactNode, useState } from 'react';
 import type { FC } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/pro-duotone-svg-icons';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface NavbarProps {
   isHomePage?: boolean;
@@ -27,10 +30,68 @@ export const Navbar: FC<NavbarProps> = ({ isHomePage, logo, links }) => {
             <NavItem key={data.copy} {...data} />
           ))}
         </nav>
+        <MobileNavButton isOpen={open} toggle={() => setOpen((prev) => !prev)}>
+          <Logo {...logo} />
+          <br />
+          {links.map((data) => (
+            <NavItem key={data.copy} {...data} />
+          ))}
+        </MobileNavButton>
       </div>
     </header>
   );
 };
+
+const MobileNavButton: FC<{ toggle: () => void; isOpen: boolean; children: ReactNode }> = ({
+  toggle,
+  isOpen,
+  children,
+}) => (
+  <>
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            className="fixed h-screen border-r-4 border-green-200 bg-gray-50 z-30 p-8"
+            animate={{ x: 0, y: '42%', opacity: [0.7, 0.8, 0.9, 1] }}
+            transition={{ duration: 0.4, type: 'tween' }}
+            exit={{ x: '-100%', opacity: [1, 0.9, 0.8, 0.7] }}
+            initial={{ x: '-100%', y: '42%', opacity: 0.7 }}
+          >
+            <div className="flex flex-col p-4 align-items-center">{children}</div>
+          </motion.div>
+          <motion.div
+            onClick={toggle}
+            className="fixed h-screen w-screen bg-gray-700 opacity-70 z-20 p-8"
+            transition={{ delay: 0.1, duration: 0.2 }}
+            animate={{ x: 100, y: '42%', opacity: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7] }}
+            initial={{ x: 100, y: '42%', opacity: 0 }}
+            exit={{ x: 100, y: '42%', opacity: [0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0] }}
+          />
+        </>
+      )}
+    </AnimatePresence>
+    <div className="sm:hidden w-full justify-end align-middle h-full flex ">
+      <button
+        onClick={toggle}
+        className="flex flex-col h-full items-end  justify-center cursor-pointer  pr-3 sm:hidden outline-none"
+      >
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.span animate={{ opacity: 1 }} transition={{ delay: 0.3 }} initial={{ opacity: 0 }} key={'nav-1'}>
+              <FontAwesomeIcon size="2x" icon={faBars} />
+            </motion.span>
+          )}
+          {isOpen && (
+            <motion.span animate={{ opacity: 1 }} transition={{ delay: 0.3 }} initial={{ opacity: 0 }} key={'nav-3'}>
+              <FontAwesomeIcon size="2x" icon={faTimes} />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </button>
+    </div>
+  </>
+);
 
 interface NavItemProps {
   href: string;
@@ -42,7 +103,7 @@ const NavItem: FC<NavItemProps> = ({ href, copy }) => {
   return (
     <Link href={href}>
       <a
-        className={`relative text-grey-700 border-b border-transparent hover:text-green-500 ml-0 sm:ml-8 mt-3 sm:mt-0 max-w-max ${
+        className={`relative m-4 text-grey-700 border-b border-transparent hover:text-green-500 ml-0 sm:ml-8 mt-3 sm:mt-0 max-w-max ${
           router.pathname === href
             ? 'before:-bottom-1 before:absolute before:w-full before:bg-green-500 before:h-px'
             : 'before:-bottom-1 before:scale-0 before:transition before:duration-500 before:absolute before:w-full before:bg-green-500 hover:before:scale-100 before:h-px before:left-0 before:invisible hover:before:visible'

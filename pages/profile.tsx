@@ -30,6 +30,7 @@ const Profile: NextPage<Props> = ({ experiences, education, logo, links, meta, f
       <Education education={education} />
       <Skills skills={skills} />
       <Link href="/resume.pdf">
+        {/* TODO change to Button downloadable */}
         <a
           className="text-sm font-semibold border text-white bg-gray-700 border-green-200 rounded-full p-4 mb-4"
           target="_blank"

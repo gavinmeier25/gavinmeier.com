@@ -1,4 +1,4 @@
 ---
-href: '/blog'
-copy: 'Blog'
+href: '/contact'
+copy: 'Contact Me'
 ---

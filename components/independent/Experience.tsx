@@ -3,14 +3,16 @@ import { Container } from '../shared/Container';
 import { Timeline, TimelineProps } from '../shared/Timeline';
 import { Title } from '../shared/Title';
 
+interface ExperienceItem {
+  company: string;
+  position: string;
+  content: ReactNode;
+  startDate: string;
+  endDate: string;
+}
+
 interface Props {
-  experiences: {
-    company: string;
-    position: string;
-    content: ReactNode;
-    startDate: string;
-    endDate: string;
-  }[];
+  experiences: ExperienceItem[];
 }
 
 export const Experience: FC<Props> = ({ experiences }) => (
@@ -29,3 +31,5 @@ export const Experience: FC<Props> = ({ experiences }) => (
     </Container>
   </div>
 );
+
+export type { ExperienceItem };

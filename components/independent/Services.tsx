@@ -3,36 +3,22 @@ import { Container } from '../shared/Container';
 import { InfoBlock } from '../shared/InfoBlock';
 import { Title } from '../shared/Title';
 
-const services = [
-  {
-    title: 'Web Development',
-    icon: '',
-    description: 'Test'
-  },
-  {
-    title: 'Web Development',
-    icon: '',
-    description: 'Test'
-  },
-  {
-    title: 'Web Development',
-    icon: '',
-    description: 'Test'
-  },
-  {
-    title: 'Web Development',
-    icon: '',
-    description: 'Test'
-  }
-];
+export interface IService {
+  title: string;
+  icon: ReactNode;
+  description: string;
+}
 
 const Service: FC<{ title: string; icon: ReactNode; description: string }> = ({ description, title, icon }) => (
   <div className="w-full sm:w-1/2">
-    <InfoBlock title={title} content={description} icon={''} />
+    <InfoBlock title={title} content={description} icon={icon} />
   </div>
 );
 
-export const Services: FC = () => {
+interface Props {
+  services: IService[];
+}
+export const Services: FC<Props> = ({ services }) => {
   return (
     <Container isSection>
       <Title center title="what I do" subTitle="Services" />
@@ -44,3 +30,5 @@ export const Services: FC = () => {
     </Container>
   );
 };
+
+export type { Service };

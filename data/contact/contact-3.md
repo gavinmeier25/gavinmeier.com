@@ -1,5 +1,6 @@
 ---
 title: 'Email'
 icon: 'paper-plane'
-content: 'gavinmeier41910@gmail.com'
 ---
+
+gavinmeier41910@gmail.com

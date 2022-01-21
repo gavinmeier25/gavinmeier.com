@@ -1,27 +1,24 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import { ContactInfo, ContactItem } from '../components/independent/ContactInfo';
 import { Layout } from '../components/independent/Layout';
-import { Navbar } from '../components/independent/Navbar';
-import { getLayoutAndMetaDataProps, LayoutMetaProps } from '../helpers/getPropData';
+import { getContactInfo, getLayoutAndMetaDataProps, LayoutMetaProps } from '../helpers/getPropData';
 
-interface ProfileProps {
-  experience: unknown;
+interface ContactProps {
+  contactItems: ContactItem[];
 }
 
-type Props = ProfileProps & LayoutMetaProps;
+type Props = ContactProps & LayoutMetaProps;
 
-const Contact: NextPage<Props> = ({ meta, footer, logo, links }) => {
+const Contact: NextPage<Props> = ({ contactItems, meta, footer, logo, links }) => {
   return (
     <Layout
       head={{
-        title: meta.title,
-        description: meta.description,
-        icon: meta.icon
+        ...meta,
       }}
       footer={{ links: footer }}
       navbar={{ isHomePage: false, logo, links }}
     >
-      <div>test</div>
+      <ContactInfo contactItems={contactItems} sectionTitle="Contact Me" sectionSubtitle="" />
     </Layout>
   );
 };
@@ -31,7 +28,8 @@ export default Contact;
 export const getStaticProps = async () => {
   return {
     props: {
-      ...getLayoutAndMetaDataProps('/contact')
-    }
+      ...getLayoutAndMetaDataProps('/contact'),
+      ...getContactInfo(),
+    },
   };
 };

@@ -25,10 +25,24 @@ const getLayoutAndMetaDataProps = (pagePath: string) => {
   };
 };
 
-const getReferenceDataProps = () => {
+const getContactInfo = () => {
+  const contactItems = retrieveMd('contact');
+
+  return {
+    contactItems
+  };
+};
+
+const getHomePageDataProps = () => {
   const references = retrieveMd(join('home', 'references'));
-  console.log(references);
-  return references;
+  const hero = retrieveMd(join('home', 'hero'));
+  const services = retrieveMd(join('home', 'services'));
+
+  return {
+    references,
+    hero,
+    services
+  };
 };
 
 const getProfileDataProps = () => {
@@ -39,6 +53,6 @@ const getProfileDataProps = () => {
   return { experiences, education, skills };
 };
 
-export { getLayoutAndMetaDataProps, getReferenceDataProps, getProfileDataProps };
+export { getLayoutAndMetaDataProps, getHomePageDataProps, getProfileDataProps, getContactInfo };
 
 export type { LayoutMetaProps };

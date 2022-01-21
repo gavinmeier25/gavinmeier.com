@@ -3,6 +3,13 @@ import { Navbar, NavbarProps } from './Navbar';
 import Head from 'next/head';
 import { Footer, FooterProps } from './Footer';
 
+interface MetaData {
+  page: string;
+  title: string;
+  icon: string;
+  description: string;
+}
+
 interface Props {
   navbar: NavbarProps;
   footer: FooterProps;
@@ -13,13 +20,6 @@ interface Props {
   };
   children: ReactNode;
   hero?: ReactNode;
-}
-
-interface MetaData {
-  page: string;
-  title: string;
-  icon: string;
-  description: string;
 }
 
 export const Layout: FC<Props> = ({ navbar, footer, head, children, hero }) => (
