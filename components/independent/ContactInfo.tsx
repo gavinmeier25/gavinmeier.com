@@ -16,16 +16,14 @@ interface Props {
 }
 
 export const ContactInfo: FC<Props> = ({ contactItems, sectionTitle, sectionSubtitle }) => (
-  <div className="w-full ">
+  <div className="w-full h-screen">
     <Container isSection>
-      <Title title={sectionTitle} subTitle={sectionSubtitle} />
-      <div className="flex flex-wrap">
+      <Title title={sectionTitle} subTitle={sectionSubtitle} center />
+      <span className="grid grid-flow-row md:grid-cols-3 w-full m-0 p-0">
         {contactItems.map(({ title, icon, content }, index) => (
-          <div className="" key={`${index}-${title}`}>
-            <InfoBlock icon={icon} title={title} content={content} center />
-          </div>
+          <InfoBlock key={`${index}-${title}`} icon={icon} title={title} content={content} center />
         ))}
-      </div>
+      </span>
     </Container>
   </div>
 );

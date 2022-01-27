@@ -109,7 +109,7 @@ const NavItem: FC<NavItemProps> = ({ href, copy }) => {
   return (
     <Link href={href}>
       <a
-        className={`relative m-4 text-grey-700 border-b border-transparent hover:text-green-500 ml-0 sm:ml-8 mt-3 sm:mt-0 max-w-max ${
+        className={`relative text-grey-700 border-b border-transparent hover:text-green-500 ml-0 mr-0 sm:ml-8 mt-3 sm:mt-0 max-w-max ${
           router.pathname === href
             ? 'before:-bottom-1 before:absolute before:w-full before:bg-green-500 before:h-px'
             : 'before:-bottom-1 before:scale-0 before:transition before:duration-500 before:absolute before:w-full before:bg-green-500 hover:before:scale-100 before:h-px before:left-0 before:invisible hover:before:visible'
