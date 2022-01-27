@@ -78,7 +78,13 @@ const MobileNavButton: FC<{ toggle: () => void; isOpen: boolean; children: React
       >
         <AnimatePresence>
           {!isOpen && (
-            <motion.span animate={{ opacity: 1 }} transition={{ delay: 0.3 }} initial={{ opacity: 0 }} key={'nav-1'}>
+            <motion.span
+              className="text-gray-700"
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              initial={{ opacity: 0 }}
+              key={'nav-1'}
+            >
               <FontAwesomeIcon size="2x" icon={faBars} />
             </motion.span>
           )}

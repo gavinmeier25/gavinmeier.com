@@ -1,5 +1,5 @@
 ---
-title: 'Web Applications'
-icon: '/code-commit.svg'
-description: 'Fast and efficient web applications built for your business.'
+title: 'Software Libraries'
+icon: 'library'
+description: 'Roll your own software libraries to remove dependencies on outside projects.'
 ---

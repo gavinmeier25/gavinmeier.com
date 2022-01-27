@@ -1,5 +1,5 @@
 ---
-title: 'Data Automation'
-icon: 'fa'
-description: 'Fast and efficient web applications built for your business.'
+title: 'Middleware'
+icon: 'data'
+description: 'Services that connect the pieces of a system to prevent a single point of failure.'
 ---

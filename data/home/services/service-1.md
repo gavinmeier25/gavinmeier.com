@@ -1,5 +1,5 @@
 ---
 title: 'Web Applications'
-icon: '/code-commit.svg'
-description: 'Fast and efficient web applications built for your business.'
+icon: 'code'
+description: 'Full stack web development, specialized in React and Typescript.'
 ---

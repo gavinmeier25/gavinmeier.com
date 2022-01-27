@@ -5,11 +5,11 @@ import { Title } from '../shared/Title';
 
 export interface IService {
   title: string;
-  icon: ReactNode;
+  icon: string;
   description: string;
 }
 
-const Service: FC<{ title: string; icon: ReactNode; description: string }> = ({ description, title, icon }) => (
+const Service: FC<IService> = ({ description, title, icon }) => (
   <div className="w-full sm:w-1/2">
     <InfoBlock title={title} content={description} icon={icon} />
   </div>

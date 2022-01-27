@@ -8,7 +8,7 @@ interface EducationItem {
   degree: string;
   startDate: string;
   endDate: string;
-  content: ReactNode;
+  content: string;
 }
 interface Props {
   education: EducationItem[];

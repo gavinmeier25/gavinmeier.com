@@ -1,6 +1,6 @@
 ---
 title: 'Location'
-icon: 'map-marker-alt'
+icon: 'location'
 ---
 
 St. Louis, Missouri, USA

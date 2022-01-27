@@ -6,7 +6,7 @@ import { Title } from '../shared/Title';
 interface ExperienceItem {
   company: string;
   position: string;
-  content: ReactNode;
+  content: string;
   startDate: string;
   endDate: string;
 }
