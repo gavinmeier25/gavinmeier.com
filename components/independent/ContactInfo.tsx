@@ -18,10 +18,10 @@ interface Props {
 export const ContactInfo: FC<Props> = ({ contactItems, sectionTitle, sectionSubtitle }) => (
   <div className="w-full ">
     <Container isSection>
-      <Title title={sectionTitle} subTitle={sectionSubtitle} center />
+      <Title title={sectionTitle} subTitle={sectionSubtitle} />
       <div className="flex flex-wrap">
         {contactItems.map(({ title, icon, content }, index) => (
-          <div className="w-full sm:w-1/3 " key={`${index}-${title}`}>
+          <div className="" key={`${index}-${title}`}>
             <InfoBlock icon={icon} title={title} content={content} center />
           </div>
         ))}
