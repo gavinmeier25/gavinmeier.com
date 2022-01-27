@@ -1,10 +1,9 @@
 import type { NextPage } from 'next';
 import { References, ReferenceProps } from '../components/independent/References';
 import { IService, Services } from '../components/independent/Services';
-import { Layout } from '../components/independent/Layout';
 import { getHomePageDataProps, getLayoutAndMetaDataProps, LayoutMetaProps } from '../helpers/getPropData';
 import { markdownToHtml } from '../utils/markdownToHtml';
-import { Hero, HeroData } from '../components/independent/Hero';
+import { HeroData } from '../components/independent/Hero';
 
 interface HomePageProps {
   references: ReferenceProps[];
@@ -16,19 +15,10 @@ type Props = HomePageProps & LayoutMetaProps;
 
 const Home: NextPage<Props> = ({ logo, links, footer, meta, references, hero, services }) => {
   return (
-    <Layout
-      head={{
-        title: meta.title,
-        description: meta.description,
-        icon: meta.icon,
-      }}
-      hero={<Hero hero={hero} />}
-      footer={{ links: footer }}
-      navbar={{ isHomePage: true, logo, links }}
-    >
+    <>
       <Services services={services} />
       <References references={references} />
-    </Layout>
+    </>
   );
 };
 

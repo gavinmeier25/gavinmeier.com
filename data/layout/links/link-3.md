@@ -1,4 +1,4 @@
 ---
 href: '/contact'
-copy: 'Contact Me'
+copy: 'Contact'
 ---

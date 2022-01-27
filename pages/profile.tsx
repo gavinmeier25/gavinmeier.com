@@ -16,15 +16,7 @@ type Props = ProfileProps & LayoutMetaProps;
 
 const Profile: NextPage<Props> = ({ experiences, education, logo, links, meta, footer, skills }) => {
   return (
-    <Layout
-      head={{
-        title: meta.title,
-        description: meta.description,
-        icon: meta.icon,
-      }}
-      footer={{ links: footer }}
-      navbar={{ isHomePage: false, logo, links }}
-    >
+    <>
       <Experience experiences={experiences} />
       <Education education={education} />
       <Skills skills={skills} />
@@ -37,7 +29,7 @@ const Profile: NextPage<Props> = ({ experiences, education, logo, links, meta, f
           Download PDF version
         </a>
       </Link>
-    </Layout>
+    </>
   );
 };
 
