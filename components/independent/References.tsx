@@ -3,7 +3,6 @@ import { Carousel } from '../shared/Carousel';
 import { Container } from '../shared/Container';
 import { Title } from '../shared/Title';
 import Image from 'next/image';
-import { Markup } from 'interweave';
 
 interface ReferenceProps {
   date: string;
@@ -28,7 +27,11 @@ const Reference: FC<ReferenceProps> = ({ imageSrc, title, content, name, date })
     <h3 className="font-semibold text-lg mt-4">{name}</h3>
     <h4 className="text-xs font-extralight -mt-1">{title}</h4>
     <h4 className="text-xs font-extralight mb-4">{date}</h4>
-    <Markup content={content} className="text-left mt-2 leading-tight markdown" containerTagName="div" />
+    <div className="text-left mt-2 leading-tight markdown">
+      {content.split('\n').map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
+      ))}
+    </div>
   </div>
 );
 interface ReferencesProps {

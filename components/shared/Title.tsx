@@ -10,9 +10,9 @@ export const Title: FC<Props> = ({ center, title, subTitle }) => {
   return (
     <div className="flex flex-col w-full">
       {subTitle && (
-        <h4 className={`text-xs text-grey-700 font-bold w-full text-left ${center ? 'text-center' : ''}`}>
+        <h2 className={`text-xs text-grey-700 font-bold w-full text-left ${center ? 'text-center' : ''}`}>
           {subTitle}
-        </h4>
+        </h2>
       )}
       <h2 className={`uppercase mb-1 text-lg font-bold w-full text-left ${center ? 'text-center' : ''}`}>{title}</h2>
       <span

@@ -1,8 +1,7 @@
 import type { NextPage } from 'next';
 import { References, ReferenceProps } from '../components/independent/References';
-import { IService, Services } from '../components/independent/Services';
+import { Services, IService } from '../components/independent/Services';
 import { getHomePageDataProps, getLayoutAndMetaDataProps, LayoutMetaProps } from '../helpers/getPropData';
-import { markdownToHtml } from '../utils/markdownToHtml';
 import { HeroData } from '../components/independent/Hero';
 
 interface HomePageProps {
@@ -13,7 +12,7 @@ interface HomePageProps {
 
 type Props = HomePageProps & LayoutMetaProps;
 
-const Home: NextPage<Props> = ({ logo, links, footer, meta, references, hero, services }) => {
+const Home: NextPage<Props> = ({ references, services }) => {
   return (
     <>
       <Services services={services} />
@@ -29,16 +28,9 @@ export const getStaticProps = async () => {
   return {
     props: {
       ...getLayoutAndMetaDataProps('/'),
-      references: await Promise.all(
-        references.map(async (ref) => ({ ...ref, content: await markdownToHtml(ref.content) })),
-      ),
-      services: await Promise.all(
-        services.map(async (service) => ({ ...service, content: await markdownToHtml(service.content) })),
-      ),
-      hero: {
-        ...hero[0],
-        content: await markdownToHtml(hero[0].content),
-      },
+      references,
+      services,
+      hero: hero[0],
     },
   };
 };

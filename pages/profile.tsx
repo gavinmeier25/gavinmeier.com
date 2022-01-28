@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import { Education } from '../components/independent/Education';
 import { Experience } from '../components/independent/Experience';
-import { Layout } from '../components/independent/Layout';
 import { Skills } from '../components/independent/Skills';
 import { getLayoutAndMetaDataProps, getProfileDataProps, LayoutMetaProps } from '../helpers/getPropData';
 

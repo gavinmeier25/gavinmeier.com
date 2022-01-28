@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import { join } from 'path';
 import { MetaData } from '../components/independent/Layout';
 import { LogoProps, NavItemProps } from '../components/independent/Navbar';
@@ -21,7 +20,7 @@ const getLayoutAndMetaDataProps = (pagePath: string) => {
     logo: logo[0],
     links,
     footer,
-    meta: meta.find((meta) => meta['page'] === pagePath) || ''
+    meta: meta.find((meta) => meta['page'] === pagePath) || '',
   };
 };
 
@@ -29,7 +28,7 @@ const getContactInfo = () => {
   const contactItems = retrieveMd('contact');
 
   return {
-    contactItems
+    contactItems,
   };
 };
 
@@ -37,11 +36,10 @@ const getHomePageDataProps = () => {
   const references = retrieveMd(join('home', 'references'));
   const hero = retrieveMd(join('home', 'hero'));
   const services = retrieveMd(join('home', 'services'));
-
   return {
     references,
     hero,
-    services
+    services,
   };
 };
 
