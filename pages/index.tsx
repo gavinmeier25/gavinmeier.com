@@ -20,6 +20,8 @@ const Home: NextPage<Props> = ({ references, services }) => {
         <meta property="og:title" content="Gavin Meier" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.gavinmeier.com/_next/image?url=%2Favatar.svg&w=1920&q=75" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:url" content="https://gavinmeier.com" />
         {/* <meta property="twitter:card" content="Gavin Meier" /> */}
       </Head>
